@@ -19,6 +19,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		setLayout(new BorderLayout());
 
 		setupComponents();
+		addListeners();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -26,19 +27,20 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 
 	private void setupComponents() {
-		textPanel = new TextPanel();
-		btn = new JButton("Click me");
 		toolbar = new ToolBar();
-		add(textPanel, BorderLayout.CENTER);
-		add(btn, BorderLayout.SOUTH);
 		add(toolbar, BorderLayout.NORTH);
-		addListeners();
+
+		textPanel = new TextPanel();
+		add(textPanel, BorderLayout.CENTER);
+
+		btn = new JButton("Click me");
+		add(btn, BorderLayout.SOUTH);
+
+		toolbar.setTextPanel(textPanel);
 	}
 
 	private void addListeners() {
 		btn.addActionListener(this);
-		toolbar.AddAppendListener(new AppendListener(textPanel));
-		toolbar.AddPrependListener(new PrependListener(textPanel));
 	}
 
 	public void actionPerformed(ActionEvent e) {

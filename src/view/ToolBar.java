@@ -2,35 +2,46 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * Created by JoaoPaulo on 30-Jul-17.
  */
-public class ToolBar extends JPanel {
-	private JToolBar toolbar;
-	private JButton appendBtn;
-	private JButton prependBtn;
+public class ToolBar extends JPanel implements ActionListener {
+	private JButton helloBtn;
+	private JButton goodbyeBtn;
+	private TextPanel textPanel;
 
 	public ToolBar() {
-		setLayout(new BorderLayout());
+		setLayout(new FlowLayout(FlowLayout.LEFT));
 		setupComponents();
+		addListeneres();
+	}
+
+	private void addListeneres() {
+		helloBtn.addActionListener(this);
+		goodbyeBtn.addActionListener(this);
 	}
 
 	private void setupComponents() {
-		toolbar = new JToolBar();
-		add(toolbar, BorderLayout.CENTER);
-		appendBtn = new JButton("Append");
-		toolbar.add(appendBtn);
-		prependBtn = new JButton("Prepend");
-		toolbar.add(prependBtn);
+		helloBtn = new JButton("Hello");
+		add(helloBtn);
+
+		goodbyeBtn = new JButton("Goodbye");
+		add(goodbyeBtn);
 	}
 
-	public void AddAppendListener(ActionListener listener) {
-		appendBtn.addActionListener(listener);
+	public void setTextPanel(TextPanel textPanel) {
+		this.textPanel = textPanel;
 	}
 
-	public void AddPrependListener(PrependListener listener) {
-		prependBtn.addActionListener(listener);
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource().equals(helloBtn)) {
+			textPanel.appendText("Hello");
+		} else if (event.getSource() == goodbyeBtn) {
+			textPanel.appendText("Goodbye");
+		}
 	}
 }
