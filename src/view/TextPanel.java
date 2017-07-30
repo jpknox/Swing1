@@ -28,6 +28,12 @@ public class TextPanel extends JPanel {
 	}
 
 	public void appendText(String message) {
-		textArea.setText(textArea.getText() + "\n" + message);
+		String separator = "\n";
+		String text = textArea.getText();
+		if (text.equals("")) {
+			textArea.setText(message);
+		} else {
+			textArea.setText(text + message);
+		}
 	}
 }
