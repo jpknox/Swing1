@@ -36,4 +36,12 @@ public class TextPanel extends JPanel {
             textArea.setText(text + message);
         }
     }
+    
+    public void println(String message) {
+        StringBuilder strbuild = new StringBuilder();
+        strbuild.append(textArea.getText());
+        strbuild.append("\n");
+        strbuild.append(message);
+        textArea.setText(strbuild.toString());
+    }
 }

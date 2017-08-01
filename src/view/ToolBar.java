@@ -12,11 +12,17 @@ public class ToolBar extends JPanel implements ActionListener {
     private JButton helloBtn;
     private JButton goodbyeBtn;
     private TextPanel textPanel;
+    private StringListener stringListener;
 
     public ToolBar() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setupComponents();
-        addListeneres();
+        addListeners();
+    }
+
+    private void addListeners() {
+        helloBtn.addActionListener(this);
+        goodbyeBtn.addActionListener(this);
     }
 
     private void setupComponents() {
@@ -27,19 +33,18 @@ public class ToolBar extends JPanel implements ActionListener {
         add(goodbyeBtn);
     }
 
-    private void addListeneres() {
-        helloBtn.addActionListener(this);
-        goodbyeBtn.addActionListener(this);
-    }
-
     public void setTextPanel(TextPanel textPanel) {
         this.textPanel = textPanel;
     }
 
+    public void setStringListener(StringListener stringListener) {
+        this.stringListener = stringListener;
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {
-        JButton pressed = (JButton)event.getSource();
-        if (pressed == helloBtn)     textPanel.appendText("Hello");
-        if (pressed == goodbyeBtn)     textPanel.appendText("Goodbye");
+        JButton btn = (JButton) event.getSource();
+        if (btn == helloBtn) stringListener.textEmitted("Hello");
+        if (btn == goodbyeBtn) stringListener.textEmitted("Goodbye");
     }
 }

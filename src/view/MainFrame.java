@@ -41,6 +41,12 @@ public class MainFrame extends JFrame implements ActionListener {
 
     private void addListeners() {
         btn.addActionListener(this);
+        toolbar.setStringListener(new StringListener() {
+			@Override
+			public void textEmitted(String text) {
+				textPanel.println(text);
+			}
+		});
     }
 
     public void actionPerformed(ActionEvent e) {
