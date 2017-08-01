@@ -7,11 +7,11 @@ import javax.swing.*;
  */
 public class App {
 
-	public App(String title, int width, int height) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				new MainFrame(title, width, height);
-			}
-		});
-	}
+    public App(String title, int width, int height) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MainFrame(title, width, height);
+            }
+        });
+    }
 }

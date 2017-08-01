@@ -9,8 +9,8 @@ import javax.swing.*;
  */
 public class Main {
 
-	public static void main(String[] args) {
-		App application = new App("Hello, World!", 600, 500);
-	}
+    public static void main(String[] args) {
+        App application = new App("Hello, World!", 600, 500);
+    }
 
 }

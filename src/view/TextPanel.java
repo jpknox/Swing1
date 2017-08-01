@@ -7,33 +7,33 @@ import java.awt.*;
  * Created by JoaoPaulo on 30-Jul-17.
  */
 public class TextPanel extends JPanel {
-	private JTextArea textArea;
+    private JTextArea textArea;
 
-	public TextPanel() {
-		setLayout(new BorderLayout());
-		setupComponents();
-	}
+    public TextPanel() {
+        setLayout(new BorderLayout());
+        setupComponents();
+    }
 
-	private void setupComponents() {
-		textArea = new JTextArea();
-		add(new JScrollPane(textArea), BorderLayout.CENTER);
-	}
+    private void setupComponents() {
+        textArea = new JTextArea();
+        add(new JScrollPane(textArea), BorderLayout.CENTER);
+    }
 
-	public JTextArea getTextArea() {
-		return this.textArea;
-	}
+    public JTextArea getTextArea() {
+        return this.textArea;
+    }
 
-	public void prependText(String message) {
-		textArea.setText(message + "\n" + textArea.getText());
-	}
+    public void prependText(String message) {
+        textArea.setText(message + "\n" + textArea.getText());
+    }
 
-	public void appendText(String message) {
-		String separator = "\n";
-		String text = textArea.getText();
-		if (text.equals("")) {
-			textArea.setText(message);
-		} else {
-			textArea.setText(text + message);
-		}
-	}
+    public void appendText(String message) {
+        String separator = "\n";
+        String text = textArea.getText();
+        if (text.equals("")) {
+            textArea.setText(message);
+        } else {
+            textArea.setText(text + message);
+        }
+    }
 }

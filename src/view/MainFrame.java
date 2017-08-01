@@ -10,42 +10,42 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame implements ActionListener {
 
-	private TextPanel textPanel;
-	private JButton btn;
-	private ToolBar toolbar;
+    private TextPanel textPanel;
+    private JButton btn;
+    private ToolBar toolbar;
 
-	public MainFrame(String title, int width, int height) {
-		super(title);
-		setLayout(new BorderLayout());
+    public MainFrame(String title, int width, int height) {
+        super(title);
+        setLayout(new BorderLayout());
 
-		setupComponents();
-		addListeners();
+        setupComponents();
+        addListeners();
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setSize(width, height);
-	}
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setSize(width, height);
+    }
 
-	private void setupComponents() {
-		toolbar = new ToolBar();
-		add(toolbar, BorderLayout.NORTH);
+    private void setupComponents() {
+        toolbar = new ToolBar();
+        add(toolbar, BorderLayout.NORTH);
 
-		textPanel = new TextPanel();
-		add(textPanel, BorderLayout.CENTER);
+        textPanel = new TextPanel();
+        add(textPanel, BorderLayout.CENTER);
 
-		btn = new JButton("Click me");
-		add(btn, BorderLayout.SOUTH);
+        btn = new JButton("Click me");
+        add(btn, BorderLayout.SOUTH);
 
-		toolbar.setTextPanel(textPanel);
-	}
+        toolbar.setTextPanel(textPanel);
+    }
 
-	private void addListeners() {
-		btn.addActionListener(this);
-	}
+    private void addListeners() {
+        btn.addActionListener(this);
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		String message = "Button Clicked";
-		textPanel.appendText(message);
-		textPanel.prependText(message);
-	}
+    public void actionPerformed(ActionEvent e) {
+        String message = "Button Clicked";
+        textPanel.appendText(message);
+        textPanel.prependText(message);
+    }
 }
